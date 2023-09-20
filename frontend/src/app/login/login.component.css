@@ -1,0 +1,241 @@
+.main{
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: center;
+}
+
+.side-image{
+  width: 50%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.signin{
+  width: 50%; 
+  padding-top: 200px;
+}
+
+.social-login{
+  display: flex;
+  justify-content: center;
+  margin: 35px;
+  gap: 10px;
+}
+
+.google, .github{
+  background-color: white;
+  border: 1px solid #DBDFE9;
+  color: #4B5675;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 12px 15px;
+  min-width: 200px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+.github img{
+  width: 17%;
+}
+
+.google img{
+  width: 10%;
+}
+
+.signin p{
+  color: #99A1B7;
+  font-size: 14px;
+}
+.signin form {
+  width: 420px;
+  margin: 0 auto; 
+}
+
+.signin form input{
+  width: 95%;
+  margin-top: 20px;
+  padding: 12px 10px;
+  border: 1px solid #DBDFE9;
+  border-radius: 5px;
+}
+
+.incorrect-password{
+  color: red !important;
+}
+
+.forgotpassword{
+  text-align: right;
+}
+
+.forgotpassword a{
+  text-decoration: none;
+  color: teal;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.signin-btn{
+  background-color: teal;
+  min-width: 100%;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 0;
+  font-size: 15px;
+  margin: 12px 0;
+
+}
+
+.signup a{
+  text-decoration: none;
+  font-size: 14px;
+  color: teal;
+  font-weight: 600;
+}
+
+.side-image{
+  background-color:teal;
+  overflow:hidden;
+  color: white;
+}
+
+.side-image h2{
+  font-size: 1.563rem;
+  margin-top: 1.875rem;
+  margin-bottom: 1.25rem;
+}
+
+.side-image p{
+  font-size: 0.938rem;
+  line-height: 1.875rem;
+  margin: 0 5.25rem;
+}
+
+.side-image .logo img{
+  width: 13%;
+  height: auto;
+  padding-top: 8.125rem;
+  max-width: 100%;
+}
+.side-image .screens img{
+  width: 60%;
+  height: auto;
+  margin-top: 5%;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 950px) {
+  .main{
+    display: block;
+  }
+
+  .signin{
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  .side-image{
+    width: 100%;
+    min-height: 0;
+  }
+  
+  .side-image .screens{
+    display: none;
+  }
+
+  .side-image h2, .side-image p{
+    display: none;
+  }
+
+  .side-image .logo img{
+    width: 15%;
+    height: auto;
+    padding: 13px 0;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 470px) {
+
+  .google, .github{
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 10px 15px;
+    min-width: 150px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  
+  }
+  .github img{
+    width: 17%;
+  }
+  
+  .google img{
+    width: 10%;
+  }
+  
+  .signin p{
+    color: #99A1B7;
+    font-size: 14px;
+  }
+
+  .signin form {
+    width: 320px;
+    margin: 0 auto; 
+  }
+  
+  
+}
+
+@media screen and (max-width: 410px) {
+  
+  .social-login{
+    display: block;
+  }
+
+  .google, .github{
+    min-width: 100%;
+    margin-top: 15px;
+  }
+
+  .github img{
+    width: 11%;
+  }
+
+}
+@media screen and (max-width: 325px) {
+  .social-login{
+    display: block;
+  }
+
+  .google, .github{
+    min-width: 100%;
+    margin-top: 15px;
+  }
+
+  .github img{
+    width: 11%;
+  }
+
+  .signin form {
+    width: 270px;
+    margin: 0 auto; 
+  }
+
+  .signin form input{
+    width: 93%;
+    margin-top: 20px;
+    padding: 12px 10px;
+    border: 1px solid #DBDFE9;
+    border-radius: 5px;
+  }
+
+  .signin-btn{
+    min-width: 100%;
+  }
+
+}
