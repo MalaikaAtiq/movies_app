@@ -1,16 +1,12 @@
 <div class="default-dashboard">
-
     <div class='head'>
         <h2> Movies </h2>
-        
         <div>
             <form>
                 <input type="text" placeholder='Search..'/> <i class="bi bi-search"></i>
             </form>
         </div>
-        
     </div>
-
     <div class='table-container'>
         <table class='movies-table'>
             <thead>
@@ -20,15 +16,14 @@
                 <th>Domestic Gross</th>
                 <th>Worldwide Gross </th>
             </thead>
-            <tr *ngFor="let movie of movies; let i = index">
+            <tr *ngFor="let movie of movies.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize); let i = index">
                 <td> {{ movie.release_date }} </td>
                 <td> {{movie.movie_title}} </td>
                 <td> ${{movie.production_budget}} </td>
                 <td> ${{movie.domestic_gross}}</td>
                 <td> ${{movie.worldwide_gross}} </td>
             </tr>
-            
         </table>
-
+        <mat-paginator [length]="movies.length" [pageSize]="pageSize" [pageIndex]="pageIndex" (page)="onPageChange($event)"> </mat-paginator>
     </div>
 </div>

@@ -14,13 +14,13 @@
       <h1> Sign In</h1>
       <p> Your Social Campaigns </p>
       <div class="social-login"> 
-      <button class="google"> <img src="../assets/login/google-icon.svg" alt=""/> Sign in with Google </button>
-      <button class="github"> <img src="../assets/login/GitHub-Mark.png" alt=""/> Sign in with Github </button>
+      <asl-google-signin-button></asl-google-signin-button>
+      <button class="github" (click)="signInWithGithub()"> <img src="../assets/login/GitHub-Mark.png" alt=""/> Sign in with Github </button>
       </div>
       <p> or with email </p>
       <form>
         <div>
-        <p class='incorrect-password'> </p>
+        <p class='incorrect-password'>{{ errorMessage }} </p>
         <input type="text" placeholder="Email" name="email" [(ngModel)]="email"/>
         </div>
         <div>

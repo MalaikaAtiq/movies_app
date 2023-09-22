@@ -93,17 +93,11 @@ export const refreshToken = async (req, res) => {
 
 export const googleSignin = async (req, res) =>{
   try{  
-   const access_token = req.body.accessToken
-   const response = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      }
-    })
-    const userData = await response.json()
-    let user = await userModel.findOne({email: userData.email})
+   const googleUser = req.body.googleUser
+    let user = await userModel.findOne({email: googleUser.email})
     console.log(user)
     if(!user)
-      user = await userModel.create({ email: userData.email, name: userData.name })
+      user = await userModel.create({ email: googleUser.email, name: googleUser.name })
     if(user.password){
       res.status(500).json({msg: "There is already an account associated with this email."})
     }
@@ -150,17 +144,17 @@ export const githubSignin = async(req,res)=>{
         }
       }).then(async(responseUserEmail)=>{
         const userEmail = await responseUserEmail.json()
+        console.log(userEmail)
         let user = await userModel.findOne({email: userEmail[0].email})
+        console.log(user)
         if(!user)
-          user = await userModel.create({ email: response[0].email, name: userData.name })
-        if(user.password){
+          user = await userModel.create({ email: userEmail[0].email, name: userData.name })
+        if(user.password)
           res.status(500).json({msg: "There is already an account associated with this email."})
-        }
-        else{
-          const accessToken = jwt.sign({ user_id: user._id}, process.env.ACCESS_SECRET, {expiresIn: "10m"})
-          const refreshToken = jwt.sign({ user_id: user._id}, process.env.REFRESH_SECRET, { expiresIn: "15m" })
-          res.status(200).json({ accessToken, refreshToken, user })
-        }
+          
+        const accessToken = jwt.sign({ user_id: user._id}, process.env.ACCESS_SECRET, {expiresIn: "10m"})
+        const refreshToken = jwt.sign({ user_id: user._id}, process.env.REFRESH_SECRET, { expiresIn: "15m" })
+        res.status(200).json({ accessToken, refreshToken, user })
       })
     })
     })

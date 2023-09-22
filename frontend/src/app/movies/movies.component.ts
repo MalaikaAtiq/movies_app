@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core'
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table'
-import { ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core'
 import axios from 'axios'
+import { MatPaginator, PageEvent } from '@angular/material/paginator'
 
 @Component({
   selector: 'app-movies',
@@ -10,22 +8,24 @@ import axios from 'axios'
   styleUrls: ['./movies.component.css']
 })
 
-export class MoviesComponent implements OnInit{
+export class MoviesComponent{
 
-  @ViewChild('paginator') paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   movies: any[] = [] ;
-  dataSource = new MatTableDataSource(this.movies)
-
-  ngAfterViewInit() {
-    this.dataSource = new MatTableDataSource(this.movies);
-    this.dataSource.paginator = this.paginator;
-}
-
-  ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+  pageSize = 10; // Number of items per page
+  pageIndex = 0; // Current page index
+  
+  ngOnInit(){
     this.getMovies()
   }
+  
+  // Pagination event handler
+  onPageChange(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+  }
+
 
 
   getMovies = async() =>{
