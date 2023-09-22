@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
-import { GoogleLoginProvider } from "@abacritt/angularx-social-login";
 import axios from 'axios'
 import { Router } from '@angular/router';
 
@@ -78,13 +77,7 @@ export class LoginComponent implements OnInit{
     }catch(err){
       console.log(err.message)
     }    
-  }
-
-  async handleClick() {
-    const response = await this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    console.log(response)
-  }
-  
+  }  
   
 }
 

@@ -22,26 +22,24 @@
   gap: 10px;
 }
 
-.google, .github{
+.github{
   background-color: white;
-  border: 1px solid #DBDFE9;
-  color: #4B5675;
+  border: 2px solid black;
   font-size: 15px;
-  border-radius: 5px;
-  padding: 12px 15px;
-  min-width: 200px;
-  width: 200px;
+  width: 41px;
+  height: 41px;
+  padding: 8px 8px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
-
 }
+.github:hover{
+  border: 2px solid grey;
+}
+
 .github img{
-  width: 17%;
-}
-
-.google img{
-  width: 10%;
+  max-width: 100%;
 }
 
 .signin p{
@@ -158,25 +156,6 @@
 }
 
 @media screen and (max-width: 470px) {
-
-  .google, .github{
-    font-size: 12px;
-    border-radius: 5px;
-    padding: 10px 15px;
-    min-width: 150px;
-    width: 200px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  
-  }
-  .github img{
-    width: 17%;
-  }
-  
-  .google img{
-    width: 10%;
-  }
   
   .signin p{
     color: #99A1B7;
@@ -191,36 +170,8 @@
   
 }
 
-@media screen and (max-width: 410px) {
-  
-  .social-login{
-    display: block;
-  }
-
-  .google, .github{
-    min-width: 100%;
-    margin-top: 15px;
-  }
-
-  .github img{
-    width: 11%;
-  }
-
-}
 @media screen and (max-width: 325px) {
-  .social-login{
-    display: block;
-  }
-
-  .google, .github{
-    min-width: 100%;
-    margin-top: 15px;
-  }
-
-  .github img{
-    width: 11%;
-  }
-
+ 
   .signin form {
     width: 270px;
     margin: 0 auto; 
