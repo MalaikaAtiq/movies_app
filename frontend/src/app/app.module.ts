@@ -13,6 +13,12 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 
 
 import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 
+import { StoreModule } from '@ngrx/store'
+import { movieReducer } from './redux/reducers/movie.reducer';
+
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+
 
 
 @NgModule({
@@ -29,7 +35,9 @@ import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
     FormsModule,
     MatPaginatorModule,
     SocialLoginModule,
-    GoogleSigninButtonModule
+    GoogleSigninButtonModule,
+    StoreModule.forRoot({ movies: movieReducer }),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [
     {
