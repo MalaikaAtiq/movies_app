@@ -10,19 +10,46 @@
 .head h2{
   color: teal;
   display: inline;
+  font-weight: bold;
+  font-family: helvetica;
 }
 
 .head input{
   border: none;
   outline: none;
   width: 300px;
-  padding: 10px 10px;
-}
-
-.head form{
+  padding: 10px 13px;
   border: 1px solid #F1F1F2;
   border-radius: 10px;
-  padding: 0px 10px;
+  padding: 10px 15px;
+  margin: 0 9px;
+}
+
+.head .search-form>i{
+  background-color: transparent;
+  border: none;
+  font-size: 15px;
+}
+
+.head .search-form button.search{
+  background-color: teal;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 10px;
+  margin: 0 10px;
+  font-weight: bold;
+  font-family: helvetica;
+}
+
+.head .search-form button.reset{
+  background-color: white;
+  border: 1px solid teal;
+  color: teal;
+  padding: 10px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-family: helvetica;
 }
 
 .default-dashboard{
@@ -49,6 +76,8 @@ overflow: auto;
 }
 .movies-table th{
   border-bottom: 1px solid #F1F1F2;
+  font-weight: bold;
+  font-family: 'Trebuchet MS';
 }
 
 .movies-table th, td {

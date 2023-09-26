@@ -4,5 +4,5 @@ export interface AppState {
 }
 
 export interface MovieState {
-  movies: [];
+  movies: {}[];
 }

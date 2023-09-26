@@ -14,73 +14,60 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./movies.component.css']
 })
 
-export class MoviesComponent implements OnInit{
+export class MoviesComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  movies: [] = [] 
-  m$: Observable<MovieState>= new Observable<MovieState>;
-  pageSize = 10; 
-  pageIndex = 0; 
-  
-  constructor(private movieService: MoviesService, private store: Store<AppState>){
+  movies: { movie_title: string }[] = []
+  m$: Observable<MovieState> = new Observable<MovieState>;
+  pageSize = 10;
+  pageIndex = 0;
+  filter: ""
+  filteredMovies: { movie_title: string } [] = []
+
+  constructor(private movieService: MoviesService, private store: Store<AppState>) {
     window.addEventListener('beforeunload', this.onBeforeUnload.bind(this));
   }
 
-  ngOnInit(){
-    console.log(JSON.parse(localStorage.getItem('moviesState')).movies.length)
-    if(JSON.parse(localStorage.getItem('moviesState')).movies.length != 0){
+  async ngOnInit() {
+    //check the local storage for movie data 
+    if (JSON.parse(localStorage.getItem('moviesState')).movies.length != 0) {
       this.movies = JSON.parse(localStorage.getItem('moviesState')).movies
-      this.store.dispatch(MovieActions.getMovies({movies: this.movies}))
-      return
+      this.store.dispatch(MovieActions.getMovies({ movies: this.movies }))
+      console.log(this.movies)
+    }
+    //if local storage has no movie data send request to the database 
+    else {
+      const movieArray = await this.getMovies();
+      this.movies = movieArray;
+      this.store.dispatch(MovieActions.getMovies({ movies: this.movies }))
     }
 
-    this.m$ = this.store.pipe(select('movies'), take(1))
-     this.m$.subscribe(async(state) => {
-       if(state.movies.length == 0){
-        console.log(state.movies.length)
-        await this.getMovies()
-        this.store.dispatch(MovieActions.getMovies({movies: this.movies}))
-        console.log("If executed", this.movies)
-       }
-
-      else{
-        this.movies = state.movies
-        console.log("else executed: ", this.movies)
-      }      
+    //subscribed to changes in the state
+    this.m$ = this.store.pipe(select('movies'))
+    this.m$.subscribe(async (state) => {
+      //this.movies = state.movies
     })
-
-
   }
-  
+
   // Pagination event handler
   onPageChange(event: PageEvent) {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
   }
 
+  getMovies = async () => {
+    const movies = await this.movieService.getMovies()
+    return movies;
+  }
 
-//write another getMovies function that brings data from redux 
-  // getMovies = async() =>{
-  //   try{
-  //     const response = await axios.get('http://localhost:5000/movies')
-  //     console.log(response.data)
-  //     this.movies = response.data
-  //   }catch(err){
-  //     console.log(err)
-  //   }
-  // }
+  filterMovies = () =>{
+    this.filteredMovies = this.movies.filter(movie => movie.movie_title.toLowerCase().includes(this.filter.toLowerCase()));
+    console.log(this.filteredMovies)
+  }
 
-//write a function that gets movies from movie service 
-
-  getMovies = async() =>{
-      console.log("I was called")
-      const movies = await this.movieService.getMovies()
-      if(movies){
-        this.movies = movies;
-      }
-
-      return;
+  resetFilter = () =>{
+    this.filteredMovies = [];
   }
 
   ngOnDestroy() {
