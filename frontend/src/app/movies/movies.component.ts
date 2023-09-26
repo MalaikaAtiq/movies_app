@@ -14,11 +14,11 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./movies.component.css']
 })
 
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  movies: { movie_title: string }[] = []
+  movies: { movie_title: string, release_date:string,	production_budget: number,	domestic_gross: Number,	worldwide_gross: Number }[] = []
   m$: Observable<MovieState> = new Observable<MovieState>;
   pageSize = 10;
   pageIndex = 0;
@@ -42,12 +42,6 @@ export class MoviesComponent implements OnInit {
       this.movies = movieArray;
       this.store.dispatch(MovieActions.getMovies({ movies: this.movies }))
     }
-
-    //subscribed to changes in the state
-    this.m$ = this.store.pipe(select('movies'))
-    this.m$.subscribe(async (state) => {
-      //this.movies = state.movies
-    })
   }
 
   // Pagination event handler
@@ -70,6 +64,10 @@ export class MoviesComponent implements OnInit {
     this.filteredMovies = [];
   }
 
+  sortDescending = () =>{
+    this.movies.sort((a, b) => b.production_budget - a.production_budget);
+  }
+
   ngOnDestroy() {
     window.removeEventListener('beforeunload', this.onBeforeUnload.bind(this));
   }
@@ -77,7 +75,6 @@ export class MoviesComponent implements OnInit {
   onBeforeUnload() {
     this.store.pipe(select('movies'), take(1)).subscribe(state => {
       localStorage.setItem('moviesState', JSON.stringify(state));
-    });
+    })
   }
 }
-

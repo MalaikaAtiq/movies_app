@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit{
     if(code){
       this.getGithubUser(code)
     }
-
     this.socialAuthService.authState.subscribe((authState) => {
       console.log(authState)
       if (authState) {
@@ -33,7 +32,6 @@ export class LoginComponent implements OnInit{
         this.getGoogleUser(authState)
         this._router.navigateByUrl('/dashboard')
       } 
-
     });
   }
 
