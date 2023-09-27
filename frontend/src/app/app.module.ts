@@ -17,6 +17,7 @@ import { StoreModule } from '@ngrx/store'
 import { movieReducer } from './redux/reducers/movie.reducer';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ChartsComponent } from './charts/charts.component';
 
 
 
@@ -27,7 +28,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     DashboardComponent,
     SidenavComponent,
     LoginComponent,
-    MoviesComponent
+    MoviesComponent,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,
