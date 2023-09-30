@@ -1,6 +1,9 @@
+<div [ngClass]="{ 'blur': true === popup }" id="movies-main">
 <div class="movies">
     <div class='head'>
-        <h2> Movies </h2>
+        <div>
+            <h2> Movies </h2> <a (click)="openPopup()"> <i class="bi bi-plus-circle"></i></a>
+        </div>
         <div>
             <form class="search-form">
                 <input type="text" placeholder='Search..' name="filter" [(ngModel)]="searchFilter" autocomplete="off"/> 
@@ -66,9 +69,19 @@
         </table>
         <mat-paginator [length]="filteredMovies.length" [pageSize]="pageSize" [pageIndex]="pageIndex" (page)="onPageChange($event)"> </mat-paginator>
     </div>
-
-        
-
-
-        
 </div>
+</div>
+<div *ngIf="popup === true" class="add-movies">
+    <form class="add-movies-form">
+        <h2> Add movie</h2>
+        <input type="text" placeholder="Movie name" name="movies_title" [(ngModel)]="movie_title"/>
+        <input type="text" placeholder="Release date" name="release_date" [(ngModel)]="release_date"/>  
+        <input placeholder="Production Budget" name="production_budget" [(ngModel)]="production_budget"/>
+        <input placeholder="Domestic Gross" name="domestic_gross" [(ngModel)]="domestic_gross"/>
+        <input placeholder="Worldwide Gross" name ="worldwide_gross" [(ngModel)]="worldwide_gross"/>
+        <button class="add-cancel" (click)="closePopup()"> Cancel </button>
+        <button class="add-submit" (click)="addMovie()"> Submit</button>
+        <p class="success-message"> {{successMessage}}</p>
+        <p class="fail-message"> {{failMessage}}</p>
+    </form>
+</div>   

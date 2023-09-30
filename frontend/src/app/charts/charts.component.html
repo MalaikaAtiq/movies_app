@@ -1,1 +1,25 @@
-<p>charts works!</p>
+<div class="charts"> 
+  <div>
+    <h3 class="type-heading"> Select chart type</h3>
+    <div class="chart-types-container"> 
+      <div class="bar-chart" (click) ="selectChartType('bar')" [ngClass]="{ 'selected': 'bar' === selectedChartType }"> 
+        <img src="../../assets/dashboard/bar.png"/>
+        <p> Bar Chart </p> 
+      </div>
+      <div class="scattered-plot-point" (click) ="selectChartType('plot')" [ngClass]="{ 'selected': 'plot' === selectedChartType }"> 
+        <img src="../../assets/dashboard/scatter-plot-icon-design-free-vector.jpg"/>
+        <p> Scattered Plot point </p>
+      </div>
+    </div>
+    <div [hidden]="selectedChartType !== 'bar'" class="chart-container">
+      <div  class="bar-chart-container"> 
+        <canvas  id="bar-chart-canvas"></canvas>
+      </div>
+    </div>
+    <div [hidden]="selectedChartType !== 'plot'" class="chart-container">
+      <div  class="bar-chart-container"> 
+        <canvas  id="scatter-canvas"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

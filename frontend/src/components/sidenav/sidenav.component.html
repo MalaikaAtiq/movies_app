@@ -6,53 +6,53 @@
 
   <div class='scroll-nav'> 
    <ul> 
-    <li> <i class="bi bi-columns-gap"></i> <a> Dashboard</a></li>
+    <li> <i class="bi bi-columns-gap"></i> <a [routerLink]="['/dashboard']">  Dashboard</a></li>
    </ul>
    
    <p class='pages'> Pages </p>
   <ul>
     <li> <i class="bi bi-person-vcard" ></i> <a [routerLink]="['/dashboard/movies']"> Movies </a></li>
-    <li> <i class="bi bi-person"></i> <a > User Profile </a></li>
-    <li> <i class="bi bi-person-check"></i> <a > Authentication </a></li>
-    <li> <i class="bi bi-building"></i> <a > Corporate </a></li>
+    <li> <i class="bi bi-person"></i> <a [routerLink]="['/dashboard/charts']"> Charts </a></li>
+    <li> <i class="bi bi-person-check"></i> <a (click)="logout()"> Logout </a></li>
+    <li> <i class="bi bi-building"></i> <a [routerLink]="['/dashboard']"> Corporate </a></li>
 
-    <li> <i class="bi bi-alexa"></i> <a > Social </a></li>
-    <li> <i class="bi bi-pencil-square"></i>  <a > Blog </a></li>
-    <li> <i class="bi bi-patch-question"></i>  <a > FAQ </a></li>
-    <li> <i class="bi bi-tags"></i> <a > Pricing </a></li>
+    <li> <i class="bi bi-alexa"></i> <a [routerLink]="['/dashboard']"> Social </a></li>
+    <li> <i class="bi bi-pencil-square"></i>  <a [routerLink]="['/dashboard']"> Blog </a></li>
+    <li> <i class="bi bi-patch-question"></i>  <a [routerLink]="['/dashboard']"> FAQ </a></li>
+    <li> <i class="bi bi-tags"></i> <a [routerLink]="['/dashboard']"> Pricing </a></li>
 
-    <li> <i class="bi bi-briefcase"></i> <a > Careers </a></li>
-    <li> <i class="bi bi-tools"></i> <a > Utilities </a></li>
-    <li> <i class="bi bi-columns"></i> <a > Widgets </a></li>
+    <li> <i class="bi bi-briefcase"></i> <a [routerLink]="['/dashboard']"> Careers </a></li>
+    <li> <i class="bi bi-tools"></i> <a [routerLink]="['/dashboard']"> Utilities </a></li>
+    <li> <i class="bi bi-columns"></i> <a [routerLink]="['/dashboard']"> Widgets </a></li>
   </ul>
 
   <p class='pages'> Apps </p>
   <ul>
-    <li> <i class="bi bi-kanban"></i> <a > Projects </a></li>
-    <li> <i class="bi bi-cart"></i> <a > Ecommerce </a></li>
-    <li> <i class="bi bi-voicemail"></i> <a > Contacts </a></li>
-    <li> <i class="bi bi-headset"></i> <a > Support Center </a></li>
+    <li> <i class="bi bi-kanban"></i> <a [routerLink]="['/dashboard']"> Projects </a></li>
+    <li> <i class="bi bi-cart"></i> <a [routerLink]="['/dashboard']"> Ecommerce </a></li>
+    <li> <i class="bi bi-voicemail"></i> <a [routerLink]="['/dashboard']"> Contacts </a></li>
+    <li> <i class="bi bi-headset"></i> <a [routerLink]="['/dashboard']"> Support Center </a></li>
 
-    <li> <i class="bi bi-people"></i> <a > User Management </a></li>
-    <li> <i class="bi bi-gem"></i><a > Customers </a></li>
-    <li> <i class="bi bi-bell"></i><a > Subscription </a></li>
-    <li> <i class="bi bi-receipt"></i> <a > Invoice Manager </a></li>
+    <li> <i class="bi bi-people"></i> <a [routerLink]="['/dashboard']"> User Management </a></li>
+    <li> <i class="bi bi-gem"></i><a [routerLink]="['/dashboard']"> Customers </a></li>
+    <li> <i class="bi bi-bell"></i><a [routerLink]="['/dashboard']"> Subscription </a></li>
+    <li> <i class="bi bi-receipt"></i> <a [routerLink]="['/dashboard']"> Invoice Manager </a></li>
 
   </ul>
 
   <p class='pages'> Layouts </p>
   <ul>
-    <li> <i class="bi bi-layout-text-window"></i><a > Layout options </a></li>
-    <li> <i class="bi bi-nut"></i><a > Toolbar </a></li>
-    <li> <i class="bi bi-layout-split"></i><a > Asides </a></li>
-    <li> <i class="bi bi-window-sidebar"></i><a > Layout Builder </a></li>
+    <li> <i class="bi bi-layout-text-window"></i><a [routerLink]="['/dashboard']"> Layout options </a></li>
+    <li> <i class="bi bi-nut"></i><a [routerLink]="['/dashboard']"> Toolbar </a></li>
+    <li> <i class="bi bi-layout-split"></i><a [routerLink]="['/dashboard']"> Asides </a></li>
+    <li> <i class="bi bi-window-sidebar"></i><a [routerLink]="['/dashboard']"> Layout Builder </a></li>
   </ul>
 
   <p class='pages'> Help </p>
   <ul>
-    <li> <i class="bi bi-columns"></i><a > Components </a></li>
-    <li> <i class="bi bi-file-earmark"></i><a > Documentation </a></li>
-    <li> <i class="bi bi-list-nested"></i><a > Changelog </a></li>
+    <li> <i class="bi bi-columns"></i><a [routerLink]="['/dashboard']"> Components </a></li>
+    <li> <i class="bi bi-file-earmark"></i><a [routerLink]="['/dashboard']"> Documentation </a></li>
+    <li> <i class="bi bi-list-nested"></i><a [routerLink]="['/dashboard']"> Changelog </a></li>
   </ul>
 
   </div>

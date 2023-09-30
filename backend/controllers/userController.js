@@ -56,7 +56,7 @@ export const login = async (req, res) => {
     if (user) {
       const isPasswordValid = await bcrypt.compare(password, user.password)
       if (isPasswordValid) {
-        const accessToken = jwt.sign({ user_id: user._id }, process.env.ACCESS_SECRET, { expiresIn: "10m" })
+        const accessToken = jwt.sign({ user_id: user._id }, process.env.ACCESS_SECRET, { expiresIn: "1h" })
         const refreshToken = jwt.sign({ user_id: user._id }, process.env.REFRESH_SECRET, { expiresIn: "15m" })
         res.status(200).json({ accessToken, refreshToken, user })
       }
@@ -80,7 +80,7 @@ export const refreshToken = async (req, res) => {
 
     if (verifyRefreshToken(user_id, refreshToken)) {
       const user = await userModel.findById(user_id)
-      const accessToken = jwt.sign({ user_id: user._id }, process.env.ACCESS_SECRET, { expiresIn: "10m" })
+      const accessToken = jwt.sign({ user_id: user._id }, process.env.ACCESS_SECRET, { expiresIn: "1h" })
       return res.json({ accessToken })
     }
     else {
@@ -102,7 +102,7 @@ export const googleSignin = async (req, res) =>{
       res.status(500).json({msg: "There is already an account associated with this email."})
     }
     else{
-      const accessToken = jwt.sign({ user_id: user._id}, process.env.ACCESS_SECRET, {expiresIn: "10m"})
+      const accessToken = jwt.sign({ user_id: user._id}, process.env.ACCESS_SECRET, {expiresIn: "1h"})
       const refreshToken = jwt.sign({ user_id: user._id}, process.env.REFRESH_SECRET, { expiresIn: "15m" })
       res.status(200).json({ accessToken, refreshToken, user })
     }

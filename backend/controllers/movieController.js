@@ -9,3 +9,13 @@ export const getMovies = async(req, res) =>{
     return res.status(500).json({ msg: err.message })
   }
 }
+
+export const addMovie = async( req, res ) =>{
+  try{
+    await movieModel.create(req.body)
+    res.json({msg: "Movie added successfully"})
+  }catch(err){  
+    console.log(err.message)
+    return res.status(500).json({msg: err.message})
+  }
+}

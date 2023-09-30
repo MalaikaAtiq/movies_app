@@ -3,7 +3,6 @@ import { MatPaginator, PageEvent, MatPaginatorIntl } from '@angular/material/pag
 import { MoviesService } from '../services/movies/movies.service';
 import { AppState, MovieState } from '../redux/app.state';
 import { Store, select } from '@ngrx/store';
-import * as MovieActions from '../redux/actions/movie.actions'
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
@@ -25,6 +24,14 @@ export class MoviesComponent implements OnInit, OnDestroy {
   searchFilter: ""
   sortFilter = ""
   filteredMovies: { movie_title: string } [] = []
+  movie_title=""
+  release_date=""
+  production_budget
+  domestic_gross
+  worldwide_gross
+  popup: Boolean = false;
+  successMessage: String = ""
+  failMessage: String = ""
 
   constructor(private movieService: MoviesService, private store: Store<AppState>, private paginatorIntl: MatPaginatorIntl) {
     window.addEventListener('beforeunload', this.onBeforeUnload.bind(this))
@@ -34,18 +41,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
-    //check the local storage for movie data 
-    if (JSON.parse(localStorage.getItem('moviesState')).movies.length != 0) {
-      this.movies = JSON.parse(localStorage.getItem('moviesState')).movies
-      this.store.dispatch(MovieActions.getMovies({ movies: this.movies }))
-      console.log(this.movies)
-    }
-    //if local storage has no movie data send request to the database 
-    else {
-      const movieArray = await this.getMovies();
-      this.movies = movieArray;
-      this.store.dispatch(MovieActions.getMovies({ movies: this.movies }))
-    }
+    this.movies = await this.getMovies()
   }
 
   // Pagination event handler
@@ -134,7 +130,32 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   resetSort = () =>{
     this.sortFilter = ""
+    this.searchFilter = ""
     this.filteredMovies = [];
+  }
+
+  closePopup = () =>{
+    this.domestic_gross = null;
+    this.production_budget = null;
+    this.worldwide_gross = null;
+    this.movie_title = "";
+    this.release_date = "";
+    this.popup = false;
+    this.successMessage = ""
+  }
+
+  openPopup= () =>{
+    this.popup = true;
+  }
+
+  addMovie = () =>{
+    this.movieService.addMovie({movie_title: this.movie_title, release_date: this.release_date, production_budget: this.production_budget, domestic_gross: this.domestic_gross, worldwide_gross: this.worldwide_gross})
+    this.domestic_gross = null;
+    this.production_budget = null;
+    this.worldwide_gross = null;
+    this.movie_title = "";
+    this.release_date = "";
+    this.successMessage = "Movie Added!"
   }
 
 

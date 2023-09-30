@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit{
       const response = await axios.post('http://localhost:5000/user/auth/github', { code: code })
           console.log(response)
           localStorage.setItem('accessToken', response.data.accessToken)
+          localStorage.setItem('isLoggedIn', "true")
           this._router.navigateByUrl('/dashboard')
     }catch(error){
       console.log(error.response.data.msg)
@@ -51,6 +52,7 @@ export class LoginComponent implements OnInit{
       const response = await axios.post('http://localhost:5000/user/auth/google', { googleUser: authState})
           console.log(response)
           localStorage.setItem('accessToken', response.data.accessToken)
+          localStorage.setItem('isLoggedIn', "true")
           this._router.navigateByUrl('/dashboard')
     }catch(error){
       console.log(error.response.data.msg)
@@ -62,6 +64,7 @@ export class LoginComponent implements OnInit{
       const response = await axios.post('http://localhost:5000/user/login', {email: this.email, password: this.password})
       console.log(response.data.user)
       localStorage.setItem('accessToken', response.data.accessToken)
+      localStorage.setItem('isLoggedIn', "true")
       this._router.navigateByUrl('/dashboard')
     }catch(error){
       console.log(error.response.data.msg)
