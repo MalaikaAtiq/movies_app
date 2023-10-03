@@ -1,3 +1,6 @@
+.small-nav{
+  display: none;
+}
 a{
   color: black;
   text-decoration: none;
@@ -75,8 +78,30 @@ display: none;
 }
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1150px) {
   .side-nav{
     display: none;
   }
+
+  .small-nav{
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-top:30px;
+    gap: 20px;
+    border-bottom: 1px solid #F1F1F2; 
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.03);
+    margin-bottom: 30px;
+  }
+
+  .hamburger-icon i{
+    font-size: 25px;
+    color: teal
+  }
+
+  .small-logo img{
+    width: 45%;
+  }
 }
+

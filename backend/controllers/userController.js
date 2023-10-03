@@ -152,7 +152,7 @@ export const githubSignin = async(req,res)=>{
         if(user.password)
           res.status(500).json({msg: "There is already an account associated with this email."})
           
-        const accessToken = jwt.sign({ user_id: user._id}, process.env.ACCESS_SECRET, {expiresIn: "10m"})
+        const accessToken = jwt.sign({ user_id: user._id}, process.env.ACCESS_SECRET, {expiresIn: "1h"})
         const refreshToken = jwt.sign({ user_id: user._id}, process.env.REFRESH_SECRET, { expiresIn: "15m" })
         res.status(200).json({ accessToken, refreshToken, user })
       })

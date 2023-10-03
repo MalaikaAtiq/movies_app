@@ -11,8 +11,14 @@
         <p> Scattered Plot point </p>
       </div>
     </div>
+
+
+
     <div [hidden]="selectedChartType !== 'bar'" class="chart-container">
       <div  class="bar-chart-container"> 
+        <div *ngIf="loading">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
         <canvas  id="bar-chart-canvas"></canvas>
       </div>
     </div>

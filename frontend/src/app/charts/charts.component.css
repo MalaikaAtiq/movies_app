@@ -17,7 +17,6 @@
   border-radius: 25px;
   display: block;
   /* background-color: red; */
-
 }
 #bar-chart-canvas{
   width: 100%;
@@ -60,7 +59,7 @@
   width: 55%;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1150px) {
   .charts{
     margin-left: 30px
   }

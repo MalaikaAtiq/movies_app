@@ -1,17 +1,22 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent {
-  constructor(private _router: Router){
+  constructor(private _router: Router, private socialAuthService: SocialAuthService){
 
   }
   logout() {
     localStorage.setItem("accessToken", "")
     localStorage.setItem("isLoggedIn", "")
-    this._router.navigateByUrl('')
+      this.socialAuthService.signOut().then(() => {
+        this._router.navigateByUrl('/');
+      });
+      this._router.navigateByUrl('/');
+    
   }
 }

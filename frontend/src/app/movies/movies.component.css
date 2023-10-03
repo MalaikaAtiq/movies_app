@@ -4,7 +4,7 @@
   align-items: center;
   width: 87%;
   padding: 0 50px;
-  margin-top: 10px;
+  margin-top: 80px;
 }
 .head i{
   background-color: white;
@@ -18,13 +18,13 @@
   display: inline;
   font-weight: bold;
   font-family: helvetica;
+  margin-left: 20px;
 }
 
 .head input{
   border: none;
   outline: none;
   width: 300px;
-  padding: 10px 13px;
   border: 1px solid #F1F1F2;
   border-radius: 10px;
   padding: 10px 15px;
@@ -190,9 +190,65 @@ mat-paginator {
   .fail-message{
     color: red;
   }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1150px) {
   .movies{
-    margin-left: 30px
+    margin-left: 20px
+  }
+  .head{
+    margin-top: 30px;
   }
 }
 
+
+@media screen and (max-width: 802px) {
+  .head{
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0;
+  }
+
+  .head h2{
+   font-size: 20px;
+  }
+
+  .head form{
+    margin-top: 30px;
+  }
+
+  .head input{
+    width: 60%;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin: 0 9px;
+  }
+  .head .search-form button.search{
+    border: 1px solid teal;
+  }
+  .head .search-form button.reset, .head .search-form button.search{
+    padding: 5px 20px;
+    border-radius: 5px;    
+  }
+}
+
+@media screen and (max-width: 607px) {
+  .head input{
+    width: 40%;
+  }
+  .head .search-form button.search{
+    border: 1px solid teal;
+  }
+  .head .search-form button.reset, .head .search-form button.search{
+    padding: 5px 20px;
+    border-radius: 5px;    
+  }
+
+  .head .search-form button.search{
+    border: 1px solid teal;
+  }
+  .head .search-form button.reset, .head .search-form button.search{
+    padding: 5px 10px;
+    border-radius: 5px;    
+  }
+
+}

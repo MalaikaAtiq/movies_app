@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { MoviesService } from '../services/movies/movies.service';
 Chart.register(...registerables);
 
 @Component({
@@ -11,15 +12,57 @@ export class ChartsComponent implements OnInit{
     selectedChartType: string = 'bar'
     myChart: Chart;
     plot: Chart;
+    loading= true;
+
+    constructor(private movieService: MoviesService){
+
+    }
  
-    ngOnInit(): void {
+    async ngOnInit() {
+        var movies = await this.movieService.getMovies()
+
+        const averageBudgetPerYear = movies.reduce((acc, movie) => {
+            const year = new Date(movie.release_date).getFullYear();
+            acc[year] = (acc[year] || { total: 0, count: 0 });
+            acc[year].total += movie.production_budget;
+            acc[year].count += 1;
+            return acc;
+          }, {})
+          
+          console.log(averageBudgetPerYear)
+
+           var years = Object.keys(averageBudgetPerYear)
+           const averageBudgets = years.map(year => {
+            return {
+              year: +year,
+              average: averageBudgetPerYear[year].total / averageBudgetPerYear[year].count
+            }
+          })
+          var count: number[] = [];
+          var i =0;
+          Object.keys(averageBudgetPerYear).forEach((key, index) =>{
+            count[i] = averageBudgetPerYear[key].count
+            i++;
+          })
+          
+          console.log(count)
+
+        //   var count = Object.values(averageBudgetPerYear)
+        //   console.log(count)
+
+          var yearsInt = years.map(year => parseInt(year))
+          yearsInt = averageBudgets.map(item => item.year)
+          console.log(yearsInt)
+          const averageBudgetValues = averageBudgets.map(item => item.average)
+      
+
     this.myChart = new Chart("bar-chart-canvas", {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: yearsInt,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Average Production Budget per Year ',
+                data: averageBudgetValues,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -51,10 +94,10 @@ export class ChartsComponent implements OnInit{
     this.plot = new Chart("scatter-canvas", {
         type: 'scatter',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: yearsInt,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Number of Releases per Year',
+                data: count,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -82,7 +125,10 @@ export class ChartsComponent implements OnInit{
             }
         }
     })
+
+    this.loading= false;
   }
+
 
   selectChartType = (type: string) =>{
     this.selectedChartType = type;
@@ -94,6 +140,9 @@ export class ChartsComponent implements OnInit{
        
     }
   }
+
+
+  
 
 
 }

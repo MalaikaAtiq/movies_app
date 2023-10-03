@@ -32,6 +32,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
   popup: Boolean = false;
   successMessage: String = ""
   failMessage: String = ""
+  loading= true
 
   constructor(private movieService: MoviesService, private store: Store<AppState>, private paginatorIntl: MatPaginatorIntl) {
     window.addEventListener('beforeunload', this.onBeforeUnload.bind(this))
@@ -42,6 +43,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.movies = await this.getMovies()
+    this.loading = false;
   }
 
   // Pagination event handler

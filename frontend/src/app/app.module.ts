@@ -3,12 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastMessageComponent } from 'src/components/toast-message/toast-message.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidenavComponent } from 'src/components/sidenav/sidenav.component';
 import { LoginComponent } from './login/login.component';
 import { MoviesComponent } from './movies/movies.component';
-
+import { LoadingSpinnerComponent } from 'src/components/loading-spinner/loading-spinner.component';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 
 import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
@@ -29,7 +34,9 @@ import { ChartsComponent } from './charts/charts.component';
     SidenavComponent,
     LoginComponent,
     MoviesComponent,
-    ChartsComponent
+    ChartsComponent,
+    LoadingSpinnerComponent,
+    ToastMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,9 @@ import { ChartsComponent } from './charts/charts.component';
     SocialLoginModule,
     GoogleSigninButtonModule,
     StoreModule.forRoot({ movies: movieReducer }),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    MatSnackBarModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
