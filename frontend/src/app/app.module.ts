@@ -8,7 +8,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ToastMessageComponent } from 'src/components/toast-message/toast-message.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidenavComponent } from 'src/components/sidenav/sidenav.component';
 import { LoginComponent } from './login/login.component';
@@ -36,7 +35,6 @@ import { ChartsComponent } from './charts/charts.component';
     MoviesComponent,
     ChartsComponent,
     LoadingSpinnerComponent,
-    ToastMessageComponent
   ],
   imports: [
     BrowserModule,
