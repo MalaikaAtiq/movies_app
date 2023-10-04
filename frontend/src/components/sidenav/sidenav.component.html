@@ -62,9 +62,67 @@
 
   <div class="small-nav">
     <div class="hamburger-icon">
-      <i class="bi bi-list"></i>
+    <a (click)="openSmallNav()">  <i class="bi bi-list"></i></a>
     </div>
+
+
     <div class='small-logo'> 
       <img src="../../assets/dashboard/default-dark.svg" alt=""/>  
     </div>
+
   </div>
+
+ 
+  <div *ngIf="showSmallNav" class="small-nav-open">
+    <a (click)="closeSmallNav()" class="close-small-nav"> <i class="bi bi-x"></i> </a>
+    <p class="pages"> Pages </p>
+    <ul>
+      <li> <i class="bi bi-person-vcard" ></i> <a [routerLink]="['/dashboard/movies']"> Movies </a></li>
+      <li> <i class="bi bi-person"></i> <a [routerLink]="['/dashboard/charts']"> Charts </a></li>
+      <li> <i class="bi bi-person-check"></i> <a (click)="logout()"> Logout </a></li>
+      <li> <i class="bi bi-building"></i> <a [routerLink]="['/dashboard']"> Corporate </a></li>
+  
+      <li> <i class="bi bi-alexa"></i> <a [routerLink]="['/dashboard']"> Social </a></li>
+      <li> <i class="bi bi-pencil-square"></i>  <a [routerLink]="['/dashboard']"> Blog </a></li>
+      <li> <i class="bi bi-patch-question"></i>  <a [routerLink]="['/dashboard']"> FAQ </a></li>
+      <li> <i class="bi bi-tags"></i> <a [routerLink]="['/dashboard']"> Pricing </a></li>
+  
+      <li> <i class="bi bi-briefcase"></i> <a [routerLink]="['/dashboard']"> Careers </a></li>
+      <li> <i class="bi bi-tools"></i> <a [routerLink]="['/dashboard']"> Utilities </a></li>
+      <li> <i class="bi bi-columns"></i> <a [routerLink]="['/dashboard']"> Widgets </a></li>
+    </ul>
+
+    <p class='pages'> Apps </p>
+  <ul>
+    <li> <i class="bi bi-kanban"></i> <a [routerLink]="['/dashboard']"> Projects </a></li>
+    <li> <i class="bi bi-cart"></i> <a [routerLink]="['/dashboard']"> Ecommerce </a></li>
+    <li> <i class="bi bi-voicemail"></i> <a [routerLink]="['/dashboard']"> Contacts </a></li>
+    <li> <i class="bi bi-headset"></i> <a [routerLink]="['/dashboard']"> Support Center </a></li>
+
+    <li> <i class="bi bi-people"></i> <a [routerLink]="['/dashboard']"> User Management </a></li>
+    <li> <i class="bi bi-gem"></i><a [routerLink]="['/dashboard']"> Customers </a></li>
+    <li> <i class="bi bi-bell"></i><a [routerLink]="['/dashboard']"> Subscription </a></li>
+    <li> <i class="bi bi-receipt"></i> <a [routerLink]="['/dashboard']"> Invoice Manager </a></li>
+
+  </ul>
+
+  <p class='pages'> Layouts </p>
+  <ul>
+    <li> <i class="bi bi-layout-text-window"></i><a [routerLink]="['/dashboard']"> Layout options </a></li>
+    <li> <i class="bi bi-nut"></i><a [routerLink]="['/dashboard']"> Toolbar </a></li>
+    <li> <i class="bi bi-layout-split"></i><a [routerLink]="['/dashboard']"> Asides </a></li>
+    <li> <i class="bi bi-window-sidebar"></i><a [routerLink]="['/dashboard']"> Layout Builder </a></li>
+  </ul>
+
+  <p class='pages'> Help </p>
+  <ul>
+    <li> <i class="bi bi-columns"></i><a [routerLink]="['/dashboard']"> Components </a></li>
+    <li> <i class="bi bi-file-earmark"></i><a [routerLink]="['/dashboard']"> Documentation </a></li>
+    <li> <i class="bi bi-list-nested"></i><a [routerLink]="['/dashboard']"> Changelog </a></li>
+  </ul>
+
+
+
+  </div>
+
+  

@@ -31,16 +31,20 @@
 .chart-types-container p{
   font-family: helvetica;
   font-size: 12px;
-  margin-top: 17px
+  margin-top: 17px;
+  font-weight: 600;
 }
-
-
 
 .scattered-plot-point, .bar-chart{
   border: 1px solid #F1F1F2; 
   box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.03);
   border-radius: 10px;
-  padding: 20px 20px;
+  padding: 4px 10px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
 }
 
 .selected {
@@ -52,15 +56,26 @@
 }
 
 .bar-chart img{
-  width: 50%
+  width: 15%
 }
 
 .scattered-plot-point img{
-  width: 55%;
+  width: 15%;
 }
 
 @media screen and (max-width: 1150px) {
   .charts{
     margin-left: 30px
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .chart-types-container{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .scattered-plot-point, .bar-chart{
+    margin: 10px 10px;
   }
 }

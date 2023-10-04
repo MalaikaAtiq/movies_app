@@ -15,6 +15,7 @@
 
 
     <div [hidden]="selectedChartType !== 'bar'" class="chart-container">
+      
       <div  class="bar-chart-container"> 
         <div *ngIf="loading">
           <app-loading-spinner></app-loading-spinner>
@@ -22,10 +23,12 @@
         <canvas  id="bar-chart-canvas"></canvas>
       </div>
     </div>
+
     <div [hidden]="selectedChartType !== 'plot'" class="chart-container">
       <div  class="bar-chart-container"> 
         <canvas  id="scatter-canvas"></canvas>
       </div>
     </div>
+
   </div>
 </div>

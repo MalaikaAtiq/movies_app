@@ -83,6 +83,46 @@ display: none;
     display: none;
   }
 
+  .small-nav-open{
+    position: absolute;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: white;
+    top: 0; 
+    padding: 20px 70px;
+    left: 0; /* Start on-screen */
+    animation: slide-in 0.7s forwards; /* Add a slide-in animation */
+    border: 1px solid #F1F1F2; 
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.03);
+  }
+
+  @keyframes slide-in {
+    from {
+      left: -100%; /* Start off-screen */
+    }
+    to {
+      left: 0; /* Slide in from left */
+    }
+  }
+
+
+
+  ::-webkit-scrollbar {
+    display: none;
+    } 
+
+    .close-small-nav{
+      display: block;
+      width: 100%;
+      text-align: right;
+    }
+
+    .close-small-nav i{
+      font-size: 25px;
+      color: black;
+      font-weight: bold;
+    }
+
   .small-nav{
     display: flex;
     align-items: center;
