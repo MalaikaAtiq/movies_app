@@ -21,7 +21,7 @@
       <form>
         <div>
         <p class='incorrect-password'> {{ errorMessage }} </p>
-        <input type="email" placeholder="Email" name="email" [(ngModel)]="email"/>
+        <input type="email" placeholder="Email" name="email" [(ngModel)]="email" (blur)="validateEmail()"/>
         </div>
         <div>
         <input type="password" placeholder="Password" name="password" [(ngModel)]="password"/>

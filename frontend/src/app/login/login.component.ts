@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit{
   email = ""
   password= ""
+  validEmail = false
   errorMessage=""
   
   constructor(private _router: Router, private socialAuthService: SocialAuthService){
@@ -60,15 +61,20 @@ export class LoginComponent implements OnInit{
   }
 
   login = async() =>{
-    try{  
-      const response = await axios.post('http://localhost:5000/user/login', {email: this.email, password: this.password})
-      console.log(response.data.user)
-      localStorage.setItem('accessToken', response.data.accessToken)
-      localStorage.setItem('isLoggedIn', "true")
-      this._router.navigateByUrl('/dashboard')
-    }catch(error){
-      console.log(error.response.data.msg)
-      this.errorMessage = error.response.data.msg
+    if(this.validEmail == true && this.email != ""){
+      try{  
+        const response = await axios.post('http://localhost:5000/user/login', {email: this.email, password: this.password})
+        console.log(response.data.user)
+        localStorage.setItem('accessToken', response.data.accessToken)
+        localStorage.setItem('isLoggedIn', "true")
+        this._router.navigateByUrl('/dashboard')
+      }catch(error){
+        console.log(error.response.data.msg)
+        this.errorMessage = error.response.data.msg
+      }
+    }
+    else{
+      this.errorMessage = "Invalid email address"
     }
   }
 
@@ -79,6 +85,17 @@ export class LoginComponent implements OnInit{
       console.log(err.message)
     }    
   }  
+
+  validateEmail() {
+    if (!this.email) {
+      this.errorMessage = "Email is required";
+    } else if (!/^\S+@\S+\.\S+$/.test(this.email)) {
+      this.errorMessage = "Invalid email format";
+    } else {
+      this.errorMessage = null
+      this.validEmail = true
+    }
+  }
   
 }
 
