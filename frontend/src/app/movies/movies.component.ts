@@ -151,16 +151,19 @@ export class MoviesComponent implements OnInit, OnDestroy {
   }
 
   addMovie = () =>{
-    // if(this.movie_title && this.release_date != "" ){
-
-    // }
-    this.movieService.addMovie({movie_title: this.movie_title, release_date: this.release_date, production_budget: this.production_budget, domestic_gross: this.domestic_gross, worldwide_gross: this.worldwide_gross})
-    this.domestic_gross = null;
-    this.production_budget = null;
-    this.worldwide_gross = null;
-    this.movie_title = "";
-    this.release_date = "";
-    this.successMessage = "Movie Added!"
+    if(this.movie_title != "" && this.release_date != "" && this.production_budget != null && this.worldwide_gross != null && this.worldwide_gross != null){
+      this.movieService.addMovie({movie_title: this.movie_title, release_date: this.release_date, production_budget: this.production_budget, domestic_gross: this.domestic_gross, worldwide_gross: this.worldwide_gross})
+      this.domestic_gross = null;
+      this.production_budget = null;
+      this.worldwide_gross = null;
+      this.movie_title = "";
+      this.release_date = "";
+      this.successMessage = "Movie Added!"
+    }
+    else{
+      this.failMessage = "Data eneterd is not correct"
+    }
+    
   }
 
 

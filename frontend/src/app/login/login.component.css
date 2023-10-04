@@ -59,6 +59,7 @@
   background-color: white;
   border: 1px solid #DBDFE9;
   border-radius: 5px;
+  outline: none;
 }
 
 .incorrect-password{
