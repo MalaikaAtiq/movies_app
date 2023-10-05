@@ -4,6 +4,9 @@ import mongoose from "mongoose"
 import morgan from "morgan"
 import 'dotenv/config'
 import cors from "cors"
+import swaggerUi from 'swagger-ui-express'
+import userSwaggerDocument from './userSwagger.json' assert {type: 'json'};
+import movieSwaggerDocument from './movieSwagger.json' assert {type: 'json'};
 
 //router imports 
 import userRouter from "./routes/userRoutes.js"
@@ -15,6 +18,12 @@ const port = 5000
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
   console.log("Connected to database")
 })
+
+userRouter.use('/api-docs', swaggerUi.serveFiles(userSwaggerDocument));
+userRouter.get('/api-docs', swaggerUi.setup(userSwaggerDocument));
+
+movieRouter.use('/api-docs', swaggerUi.serveFiles(movieSwaggerDocument));
+movieRouter.get('/api-docs', swaggerUi.setup(movieSwaggerDocument));
 
 app.use(express.json())
 app.use(cors())
