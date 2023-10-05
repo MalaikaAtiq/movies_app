@@ -63,6 +63,10 @@
   width: 15%;
 }
 
+::-webkit-scrollbar {
+  display: none;
+  } 
+
 @media screen and (max-width: 1150px) {
   .charts{
     margin-left: 20px

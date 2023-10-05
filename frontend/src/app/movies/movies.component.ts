@@ -22,6 +22,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
   pageSize = 10
   pageIndex = 0
   searchFilter: ""
+  searchFailed: Boolean = false
   sortFilter = ""
   filteredMovies: { movie_title: string } [] = []
   movie_title=""
@@ -33,6 +34,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
   successMessage: String = ""
   failMessage: String = ""
   loading= true
+  
 
   constructor(private movieService: MoviesService, private store: Store<AppState>, private paginatorIntl: MatPaginatorIntl) {
     window.addEventListener('beforeunload', this.onBeforeUnload.bind(this))
@@ -59,13 +61,19 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   filterMovies = () =>{
       this.filteredMovies = this.movies.filter(movie => movie.movie_title.toLowerCase().includes(this.searchFilter.toLowerCase()));
-   
+      if(this.filteredMovies.length == 0){
+        this.searchFailed = true;
+      }
+      else{
+        this.searchFailed = false;
+      }
   }
 
   resetSearch = () =>{
     this.searchFilter = ""
     this.sortFilter=""
     this.filteredMovies = [];
+    this.searchFailed = false
   }
 
   sortAscending = (filter) =>{
@@ -161,7 +169,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
       this.successMessage = "Movie Added!"
     }
     else{
-      this.failMessage = "Data eneterd is not correct"
+      this.failMessage = "Fill all the input fields"
     }
     
   }

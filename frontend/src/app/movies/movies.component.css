@@ -29,6 +29,7 @@
   border-radius: 10px;
   padding: 10px 15px;
   margin: 0 9px;
+  outline: none;
 }
 
 .head .search-form button.search{
@@ -161,6 +162,7 @@ mat-paginator {
     padding: 12px 10px;
     border: 1px solid #DBDFE9;
     border-radius: 5px;
+    outline: none;
   }
 
   .add-movies-form button.add-cancel{
@@ -197,6 +199,11 @@ mat-paginator {
   .head{
     margin-top: 30px;
   }
+
+  .add-movies{
+    left: 25%;
+    width: 50%;
+  }
 }
 
 
@@ -229,6 +236,9 @@ mat-paginator {
     padding: 5px 20px;
     border-radius: 5px;    
   }
+  .add-movies{
+    left: 15%;
+  }
 }
 
 @media screen and (max-width: 607px) {
@@ -251,4 +261,11 @@ mat-paginator {
     border-radius: 5px;    
   }
 
+}
+
+@media screen and (max-width: 607px) {
+  .add-movies-form button.add-submit{
+    margin-top: 5px;
+    margin-left:  0px 
+  }
 }

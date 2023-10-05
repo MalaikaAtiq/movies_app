@@ -18,8 +18,12 @@
         <app-loading-spinner></app-loading-spinner>
     </div>
 
+    <div class='table-container' *ngIf="searchFailed ">
+        <p> No results </p>
+    </div>
+
     
-    <div class='table-container' *ngIf="filteredMovies && filteredMovies.length == 0 && loading == false">
+    <div class='table-container' *ngIf="filteredMovies && filteredMovies.length == 0 && loading == false && !searchFailed">
         <table class='movies-table' >
             <thead>
                 <th>Release Date </th> 
