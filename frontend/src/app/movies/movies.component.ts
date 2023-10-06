@@ -168,6 +168,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
       this.movie_title = "";
       this.release_date = "";
       this.successMessage = "Movie Added!"
+      this.failMessage = ""
     }
     else{
       this.failMessage = "Fill all the input fields"

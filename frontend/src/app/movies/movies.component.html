@@ -85,9 +85,9 @@
         <h2> Add movie</h2>
         <input type="text" placeholder="Movie name" name="movies_title" [(ngModel)]="movie_title"/>
         <input type="text" placeholder="Release date" name="release_date" [(ngModel)]="release_date"/>  
-        <input placeholder="Production Budget" name="production_budget" [(ngModel)]="production_budget"/>
-        <input placeholder="Domestic Gross" name="domestic_gross" [(ngModel)]="domestic_gross"/>
-        <input placeholder="Worldwide Gross" name ="worldwide_gross" [(ngModel)]="worldwide_gross"/>
+        <input placeholder="Production Budget" name="production_budget" [(ngModel)]="production_budget" type="text" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"/>
+        <input placeholder="Domestic Gross" name="domestic_gross" [(ngModel)]="domestic_gross" type="text" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"/>
+        <input placeholder="Worldwide Gross" name ="worldwide_gross" [(ngModel)]="worldwide_gross" type="text" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"/>
         <button class="add-cancel" (click)="closePopup()"> Cancel </button>
         <button class="add-submit" (click)="addMovie()"> Submit</button>
         <p class="success-message"> {{successMessage}}</p>
