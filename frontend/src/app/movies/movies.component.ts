@@ -66,6 +66,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
       }
       else{
         this.searchFailed = false;
+        this.pageIndex = 0
       }
   }
 
