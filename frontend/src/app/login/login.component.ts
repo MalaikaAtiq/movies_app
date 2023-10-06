@@ -30,8 +30,10 @@ export class LoginComponent implements OnInit{
       console.log(authState)
       if (authState) {
         console.log(authState.idToken)
-        this.getGoogleUser(authState)
-        this._router.navigateByUrl('/dashboard')
+        this.getGoogleUser(authState).then(()=>{
+          this._router.navigateByUrl('/dashboard')
+        })
+
       } 
     });
   }
@@ -54,7 +56,6 @@ export class LoginComponent implements OnInit{
           console.log(response)
           localStorage.setItem('accessToken', response.data.accessToken)
           localStorage.setItem('isLoggedIn', "true")
-          this._router.navigateByUrl('/dashboard')
     }catch(error){
       console.log(error.response.data.msg)
     }
